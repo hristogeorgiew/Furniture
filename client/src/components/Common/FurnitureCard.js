@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-export default class FurnitureList extends Component {
+export default class FurnitureCard extends Component {
     render(){
         return(
             <div className="col-md-4">
