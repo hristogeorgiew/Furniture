@@ -1,4 +1,4 @@
-import { Switch, Route} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import HomePage from './components/Home/HomePage';
 import CreatePage from './components/Create/CreatePage';
 import ProfilePage from './components/Profile/ProfilePage';
@@ -12,16 +12,18 @@ import Footer from './components/Common/Footer';
 function App() {
   return (
     <div>
-        <Header />
-        <Switch>
+      <Header />
+        <main>
+          <Switch>
             <Route exact path='/' component={HomePage} />
             <Route exact path='/create' component={CreatePage} />
             <Route exact path='/profile' component={ProfilePage} />
             <Route exact path='/details/:id' component={DetailsPage} />
             <Route exact path='/login' component={LoginPage} />
-            <Route exact  component={NotFound} />
-        </Switch>
-        <Footer />
+            <Route exact component={NotFound} />
+          </Switch>
+        </main>
+      <Footer />
     </div>
   );
 }
