@@ -8,6 +8,8 @@ import NotFound from './components/Common/NotFound';
 import Header from './components/Common/Header';
 import Footer from './components/Common/Footer';
 
+import { furniture } from './data.json';
+
 
 function App() {
   return (
@@ -15,7 +17,7 @@ function App() {
       <Header />
         <main>
           <Switch>
-            <Route exact path='/' component={HomePage} />
+            <Route exact path='/' render={() => <HomePage furniture={furniture} />} />
             <Route exact path='/create' component={CreatePage} />
             <Route exact path='/profile' component={ProfilePage} />
             <Route exact path='/details/:id' component={DetailsPage} />

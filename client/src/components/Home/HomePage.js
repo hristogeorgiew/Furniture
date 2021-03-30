@@ -5,6 +5,9 @@ import Paginator from '../Common/Paginator';
 
 export default class HomePage extends Component {
     render() {
+
+        const { furniture } = this.props;
+
         return (
             <div className="container">
             <div className="row space-top">
@@ -19,7 +22,7 @@ export default class HomePage extends Component {
                 </div>
             </div>
 
-            <FurnitureList />
+            <FurnitureList furniture={furniture}/>
             <Paginator />
         </div>
         )
