@@ -8,12 +8,12 @@ const Header = () => {
                 <div casclassNames="row">
                     <div class="col-md-12">
                         <Link className="navbar-brand"  to="/">FS</Link>
-                        <NavLink className="nav-link active" activeClassName='active' exact to="/">Home</NavLink>
-                        <NavLink className="nav-link" activeClassName='active' to="/create">Create Furniture</NavLink>
-                        <NavLink className="nav-link" activeClassName='active' to="/profile">My Furniture</NavLink>
-                        <NavLink className="nav-link" activeClassName='active' to="#">Logout</NavLink>
-                        <NavLink className="nav-link" activeClassName='active' to="/login">Login</NavLink>
-                        <NavLink className="nav-link" activeClassName='active' to="/register">Register</NavLink>
+                        <NavLink className="nav-link active" activeclassName='active' exact to="/">Home</NavLink>
+                        <NavLink className="nav-link" activeclassName='active' to="/create">Create Furniture</NavLink>
+                        <NavLink className="nav-link" activeclassName='active' to="/profile">My Furniture</NavLink>
+                        <NavLink className="nav-link" activeclassName='active' to="#">Logout</NavLink>
+                        <NavLink className="nav-link" activeclassName='active' to="/login">Login</NavLink>
+                        <NavLink className="nav-link" activeclassName='active' to="/register">Register</NavLink>
                         <span>72 items in catalog</span>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import LoginPage from './components/Auth/LoginPage';
 import NotFound from './components/Common/NotFound';
 import Header from './components/Common/Header';
 import Footer from './components/Common/Footer';
+import RegisterPage from './components/Auth/RegisterPage';
 
 import { furniture } from './data.json';
 
@@ -21,6 +22,7 @@ function App() {
             <Route exact path='/create' component={CreatePage} />
             <Route exact path='/profile' component={ProfilePage} />
             <Route exact path='/details/:id' component={DetailsPage} />
+            <Route exact path='/register' component={RegisterPage} />
             <Route exact path='/login' component={LoginPage} />
             <Route exact component={NotFound} />
           </Switch>
