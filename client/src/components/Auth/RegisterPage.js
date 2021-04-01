@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Input from './Input';
-import { login, register } from '../../api/remote';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { registerAction, loginAction } from '../../actions/authActions';
 
-export default class RegisterPage extends Component {
+ class RegisterPage extends Component {
 
     constructor(props) {
         super(props);
@@ -24,23 +25,20 @@ export default class RegisterPage extends Component {
             this.setState({ [e.target.name]: e.target.value });
         }
 
-        async onSubmitHandler(e) {
+        onSubmitHandler(e) {
             e.preventDefault();
-            //Изпращаме на сървъра данните и res е това, което ни връща сървъра json format
-            const res = await register(this.state.name, this.state.email, this.state.password);
-            
-            if (res.success) {
-                const token = await login(this.state.email, this.state.password);
-                //запазваме си в сесия за автентикация това което ни връща сървъра
-                localStorage.setItem('authToken', token.token);
-                localStorage.setItem('user', token.user.name);
-                this.setState({ redirect: true })
+            this.props.register(this.state.name, this.state.email, this.state.password);
+        }
+
+        componentWillReceiveProps(newProps) {
+            if(newProps.registerSuccess) {
+                this.props.login(this.state.email, this.state.password);
             }
         }
 
 
     render() {
-        if (this.state.redirect) {
+        if (this.props.loginSuccess) {
             return (
                 <Redirect to="/" />
             );
@@ -90,8 +88,21 @@ export default class RegisterPage extends Component {
     }
 }
 
+function mapStateToprops (state){
+    return {
+        registerSuccess: state.register.success,
+        loginSuccess: state.login.success
+    }
+}
 
+function mapDispatchToProps (dispatch) {
+    return {
+        register: (name, email, password) => dispatch(registerAction(name, email, password)),
+        login: (email, password) => dispatch(loginAction(email, password))
+    };
+}
+    
 
-
+export default connect(mapStateToprops, mapDispatchToProps)(RegisterPage);
 
 
