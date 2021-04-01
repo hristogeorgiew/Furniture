@@ -26,10 +26,22 @@ class App extends Component {
     this.onLogout = this.onLogout.bind(this);
   }
 
+  componentWillMount() {
+    if(localStorage.authToken) {
+       this.setState({ loggedIn: true });
+    }
+  }
+
   onLogout() {
     this.setState({loggedIn: false})
     this.props.logout();
     this.props.history.push('/');
+  }
+
+  componentWillReceiveProps(nextProps) {
+      if (nextProps.loginSuccess) {
+        this.setState({loggedIn: true})
+      }
   }
 
   render() {
