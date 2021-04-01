@@ -1,10 +1,86 @@
 import React, { Component } from 'react';
+import Input from './Input';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { loginAction, redirect } from '../../actions/authActions';
 
 
-export default class LoginPage extends Component {
+class LoginPage extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            email: '',
+            password: '',
+        };
+
+        this.onChangeHandler = this.onChangeHandler.bind(this);
+        this.onSubmitHandler = this.onSubmitHandler.bind(this);
+    }
+
+    onChangeHandler(e) {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
+    onSubmitHandler(e) {
+        e.preventDefault();
+        this.props.login(this.state.email, this.state.password);
+    }
+
+
     render() {
+
+        if (this.props.loginSuccess) {
+            this.props.redirect();
+            return (
+                <Redirect to="/" />
+            );
+        }
+
         return (
-            <h1>Login Page</h1>
+            <div className="container">
+            <div className="row space-top">
+                <div className="col-md-12">
+                    <h1>Login</h1>
+                </div>
+            </div>
+            <form onSubmit={this.onSubmitHandler}>
+                <div className="row space-top">
+                    <div className="col-md-4">
+                        <Input 
+                            name="email"
+                            value={this.state.email}
+                            onChange={this.onChangeHandler}
+                            label="E-mail"
+                        />
+                        <Input 
+                            name="password"
+                            value={this.state.password}
+                            onChange={this.onChangeHandler}
+                            label="Password"
+                        />
+						<input type="submit" className="btn btn-primary" value="Login" />
+                    </div>
+                </div>
+            </form>
+        </div>
         )
     }
 }
+
+function mapStateToprops (state){
+    return {
+        loginSuccess: state.login.success
+    }
+}
+
+function mapDispatchToProps (dispatch) {
+    return {
+        login: (email, password) => dispatch(loginAction(email, password)),
+        redirect: () => dispatch(redirect())
+    };
+}
+    
+
+export default connect(mapStateToprops, mapDispatchToProps)(LoginPage);

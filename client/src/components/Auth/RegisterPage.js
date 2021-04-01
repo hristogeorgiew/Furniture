@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Input from './Input';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { registerAction, loginAction } from '../../actions/authActions';
+import { registerAction, loginAction, redirect } from '../../actions/authActions';
 
  class RegisterPage extends Component {
 
@@ -39,6 +39,7 @@ import { registerAction, loginAction } from '../../actions/authActions';
 
     render() {
         if (this.props.loginSuccess) {
+            this.props.redirect();
             return (
                 <Redirect to="/" />
             );
@@ -98,7 +99,8 @@ function mapStateToprops (state){
 function mapDispatchToProps (dispatch) {
     return {
         register: (name, email, password) => dispatch(registerAction(name, email, password)),
-        login: (email, password) => dispatch(loginAction(email, password))
+        login: (email, password) => dispatch(loginAction(email, password)),
+        redirect: () => dispatch(redirect())
     };
 }
     

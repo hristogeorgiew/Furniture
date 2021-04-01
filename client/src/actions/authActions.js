@@ -1,4 +1,4 @@
-import { REGISTER_SUCCESS, LOGIN_SUCCESS } from '../actions/actionTypes';
+import { REGISTER_SUCCESS, LOGIN_SUCCESS, REDIRECTED } from '../actions/actionTypes';
 import { login, register } from '../api/remote';
 
 function registerSuccess() {
@@ -10,6 +10,12 @@ function registerSuccess() {
 function loginSuccess() {
     return {
         type: LOGIN_SUCCESS
+    }
+}
+
+export function redirect() {
+    return {
+        type: REDIRECTED
     }
 }
 
