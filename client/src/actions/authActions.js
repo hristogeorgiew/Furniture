@@ -43,4 +43,10 @@ function loginAction(email, password) {
     }
 }
 
-export {registerAction, loginAction};
+function logoutAction() {
+    return (dispatch) => {
+        localStorage.clear();
+    }
+}
+
+export {registerAction, loginAction, logoutAction};

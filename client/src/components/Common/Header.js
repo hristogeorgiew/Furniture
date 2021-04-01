@@ -1,7 +1,12 @@
+  
+import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
-const Header = () => {
-    return(
+export default class Header extends Component {
+    render() {
+        const {logout, items, users, loggedIn} = this.props;
+
+        return (
         <header>
         <nav className="navbar navbar-dark bg-primary">
             <div className="container">
@@ -9,12 +14,13 @@ const Header = () => {
                     <div class="col-md-12">
                         <Link className="navbar-brand"  to="/">FS</Link>
                         <NavLink className="nav-link active" activeclassName='active' exact to="/">Home</NavLink>
-                        <NavLink className="nav-link" activeclassName='active' to="/create">Create Furniture</NavLink>
-                        <NavLink className="nav-link" activeclassName='active' to="/profile">My Furniture</NavLink>
-                        <NavLink className="nav-link" activeclassName='active' to="#">Logout</NavLink>
-                        <NavLink className="nav-link" activeclassName='active' to="/login">Login</NavLink>
-                        <NavLink className="nav-link" activeclassName='active' to="/register">Register</NavLink>
-                        <span>72 items in catalog</span>
+                        {loggedIn && <NavLink className="nav-link" activeClassName="active" to="/create">Create Furniture</NavLink>}
+                                {loggedIn && <NavLink className="nav-link" activeClassName="active" to="/profile">My Furniture</NavLink>}
+                                {loggedIn && <a className="nav-link" href="javascript:void()" onClick={logout}>Logout</a>}
+                                {!loggedIn && <NavLink className="nav-link" activeClassName="active" to="/login">Login</NavLink>}
+                                {!loggedIn && <NavLink className="nav-link" activeClassName="active" to="/register">Register</NavLink>}
+                        <span>{items} items in catalog</span>|
+                        <span>{users} registered users</span>
                     </div>
                 </div>
             </div>
@@ -23,4 +29,4 @@ const Header = () => {
     );
 }
 
-export default Header;
+}

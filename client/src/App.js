@@ -1,4 +1,7 @@
-import { Switch, Route } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logoutAction } from './actions/authActions';
 import HomePage from './components/Home/HomePage';
 import CreatePage from './components/Create/CreatePage';
 import ProfilePage from './components/Profile/ProfilePage';
@@ -12,10 +15,32 @@ import RegisterPage from './components/Auth/RegisterPage';
 import { furniture } from './data.json';
 
 
-function App() {
-  return (
-    <div>
-      <Header />
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loggedIn: false
+    };
+
+    this.onLogout = this.onLogout.bind(this);
+  }
+
+  onLogout() {
+    this.setState({loggedIn: false})
+    this.props.logout();
+    this.props.history.push('/');
+  }
+
+  render() {
+    return (
+      <div>
+        <Header
+          items={0}
+          users={0}
+          loggedIn={this.state.loggedIn}
+          logout={this.onLogout}
+        />
         <main>
           <Switch>
             <Route exact path='/' render={() => <HomePage furniture={furniture} />} />
@@ -27,9 +52,23 @@ function App() {
             <Route exact component={NotFound} />
           </Switch>
         </main>
-      <Footer />
-    </div>
-  );
+        <Footer />
+      </div>
+    );
+  }
+
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    loginSuccess: state.login.success
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+      logout: () => dispatch(logoutAction())
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
