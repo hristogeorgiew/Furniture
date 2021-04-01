@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Input from './Input';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginAction, redirect } from '../../actions/authActions';
 
@@ -28,15 +28,14 @@ class LoginPage extends Component {
         this.props.login(this.state.email, this.state.password);
     }
 
+    componentWillReceiveProps(nextProps){
+        if (nextProps.loginSuccess){
+            this.props.redirect();
+            this.props.history.push('/');
+        }
+    }
 
     render() {
-
-        if (this.props.loginSuccess) {
-            this.props.redirect();
-            return (
-                <Redirect to="/" />
-            );
-        }
 
         return (
             <div className="container">
@@ -83,4 +82,4 @@ function mapDispatchToProps (dispatch) {
 }
     
 
-export default connect(mapStateToprops, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToprops, mapDispatchToProps)(withRouter (LoginPage));

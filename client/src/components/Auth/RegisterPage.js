@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Input from './Input';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registerAction, loginAction, redirect } from '../../actions/authActions';
 
@@ -33,17 +33,16 @@ import { registerAction, loginAction, redirect } from '../../actions/authActions
         componentWillReceiveProps(newProps) {
             if(newProps.registerSuccess) {
                 this.props.login(this.state.email, this.state.password);
+            } else if (newProps.loginSuccess){
+                this.props.redirect();
+                this.props.history.push('/');
             }
         }
 
 
     render() {
-        if (this.props.loginSuccess) {
-            this.props.redirect();
-            return (
-                <Redirect to="/" />
-            );
-        }
+       
+
         return (
             <div className="container">
             <div className="row space-top">
@@ -105,6 +104,6 @@ function mapDispatchToProps (dispatch) {
 }
     
 
-export default connect(mapStateToprops, mapDispatchToProps)(RegisterPage);
+export default connect(mapStateToprops, mapDispatchToProps)(withRouter(RegisterPage));
 
 
