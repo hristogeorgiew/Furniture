@@ -37,3 +37,18 @@ export function fetchDetailsAction(id) {
         }
     };
 }
+
+export function fetchSearchAction(query, page) {
+    return async (dispatch) => {
+        dispatch({ type: AJAX_BEGIN });
+        try {
+           const data = await fetchSearchPage(query, page);
+           dispatch(fetchSuccess(data))
+        } catch (error) {
+            dispatch({ 
+                type: AJAX_ERROR,
+                error
+            });
+        }
+    };
+}
