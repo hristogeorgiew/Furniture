@@ -45,4 +45,15 @@ async function fetchDetails (id) {
 }
 
 
-export { register, login };
+async function fetchSearchPage (query, page) {
+    const res = await fetch(host + `furniture/all?page=${page}&search=${query}`);
+    return await res.json();
+}
+
+async function fetchStats () {
+    const res = await fetch(host + `stats`);
+    return await res.json();
+}
+
+
+export { register, login, fetchPage, fetchDetails, fetchSearchPage, fetchStats };
