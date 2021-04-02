@@ -1,5 +1,7 @@
+const host = 'http://localhost:5000/';
+
 async function register (name, email, password) {
-    const res = await fetch('http://localhost:5000/auth/signup', {
+    const res = await fetch(host + 'auth/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -16,7 +18,7 @@ async function register (name, email, password) {
 }
 
 async function login (email, password) {
-    const res = await fetch('http://localhost:5000/auth/login', {
+    const res = await fetch(host + 'auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -29,5 +31,18 @@ async function login (email, password) {
 
     return await res.json();
 }
+
+//взимаме един продукт
+async function fetchPage (page) {
+    const res = await fetch(host + 'furniture/all?page=' + page);
+    return await res.json();
+}
+
+//взимаме един продукт детайлс
+async function fetchDetails (id) {
+    const res = await fetch(host + 'furniture/details/' + id);
+    return await res.json();
+}
+
 
 export { register, login };
