@@ -22,3 +22,18 @@ export function fetchPageAction(page) {
         }
     };
 }
+
+export function fetchDetailsAction(id) {
+    return async (dispatch) => {
+        dispatch({ type: AJAX_BEGIN });
+        try {
+           const data = await fetchDetails(id);
+           dispatch(fetchSuccess(data))
+        } catch (error) {
+            dispatch({ 
+                type: AJAX_ERROR,
+                error
+            });
+        }
+    };
+}
