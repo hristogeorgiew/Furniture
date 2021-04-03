@@ -43,7 +43,7 @@ const furnitureData = {
       "model": "Table",
       "year": 2006,
       "description": "Dining table",
-      "price": 249,
+      "price": 100,
       "image": "http://www.ikea.com/us/en/images/products/knislinge-sofa-white__0119786_PE276232_S4.JPG",
       "createdOn": "2017-11-14T08:37:36.871Z",
       "createdBy": "pesho@mail.com",

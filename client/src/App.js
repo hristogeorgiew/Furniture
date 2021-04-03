@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutAction } from './actions/authActions';
+import { fetchStatsAction } from './actions/statsActions';
+
+
 import HomePage from './components/Home/HomePage';
 import CreatePage from './components/Create/CreatePage';
 import ProfilePage from './components/Profile/ProfilePage';
@@ -30,6 +33,8 @@ class App extends Component {
     if(localStorage.authToken) {
        this.setState({ loggedIn: true });
     }
+
+    this.props.fetchStats();
   }
 
   onLogout() {
@@ -48,8 +53,8 @@ class App extends Component {
     return (
       <div>
         <Header
-          items={0}
-          users={0}
+          items={this.props.items}
+          users={this.props.users}
           loggedIn={this.state.loggedIn}
           logout={this.onLogout}
         />
@@ -75,13 +80,17 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    loginSuccess: state.login.success
-  };
+    loginSuccess: state.login.success,
+    users: state.stats.users,
+    items: state.stats.furniture
+
+    };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-      logout: () => dispatch(logoutAction())
+      logout: () => dispatch(logoutAction()),
+      fetchStats: () => dispatch(fetchStatsAction())
     }
 }
 
