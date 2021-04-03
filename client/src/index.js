@@ -14,8 +14,6 @@ import { fetchStatsAction } from './actions/statsActions';
 
 const store = createStore(combineReducers(reducers), applyMiddleware(thunk));
 
-store.subscribe(() => console.log(store.getState()));
-store.dispatch(fetchStatsAction());
 
 ReactDOM.render(
   <Provider store={store}>
