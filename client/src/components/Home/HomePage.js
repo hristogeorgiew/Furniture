@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import FurnitureList from '../common/FurnitureList';
-import Paginator from '../common/Paginator';
-import { fetchPageAction, fetchSearchAction } from '../../actions/furnitureActions';
+import FurnitureList from '../Common/FurnitureList';
+import Paginator from '../Common/Paginator';
+import {fetchPageAction, fetchSearchAction} from '../../actions/furnitureActions';
 import { connect } from 'react-redux';
 
 
