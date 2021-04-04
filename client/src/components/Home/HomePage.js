@@ -63,7 +63,7 @@ class HomePage extends Component {
             </div>
 
             <FurnitureList furniture={furniture}/>
-            <Paginator />
+            <Paginator items={this.props.items} lenght={pageLength} current={Number(page)} />
         </div>
         )
     }
@@ -71,7 +71,8 @@ class HomePage extends Component {
 
 function mapStateToprops (state){
     return {
-        furniture: state.furniture
+        furniture: state.furniture,
+        items: state.stats.furniture
     }
 }
 
