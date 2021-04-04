@@ -1,6 +1,6 @@
 const host = 'http://localhost:5000/';
 
-async function register (name, email, password) {
+async function register(name, email, password) {
     const res = await fetch(host + 'auth/signup', {
         method: 'POST',
         headers: {
@@ -12,12 +12,10 @@ async function register (name, email, password) {
             password
         })
     });
-
-    //каквото ни е върнъл сървъра
     return await res.json();
 }
 
-async function login (email, password) {
+async function login(email, password) {
     const res = await fetch(host + 'auth/login', {
         method: 'POST',
         headers: {
@@ -28,33 +26,33 @@ async function login (email, password) {
             password
         })
     });
-
     return await res.json();
 }
 
-//взимаме един продукт
-async function fetchPage (page) {
+async function fetchPage(page) {
     const res = await fetch(host + 'furniture/all?page=' + page);
     return await res.json();
 }
 
-//взимаме един продукт детайлс
-async function fetchDetails (id) {
-    const res = await fetch(host + 'furniture/details/' + id);
+async function fetchDetails(id) {
+    const res = await fetch(host + 'furniture/details/' + id, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'bearer ' + localStorage.getItem('authToken')
+        },
+    });
     return await res.json();
 }
 
-
-async function fetchSearchPage (query, page) {
+async function fetchSearchPage(query, page) {
     const res = await fetch(host + `furniture/all?page=${page}&search=${query}`);
     return await res.json();
 }
 
-async function fetchStats () {
-    const res = await fetch(host + `stats`);
+async function fetchStats() {
+    const res = await fetch(host + 'stats');
     return await res.json();
 }
-
 
 async function createFurniture(data) {
     const res = await fetch(host + 'furniture/create', {
