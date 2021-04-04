@@ -56,4 +56,16 @@ async function fetchStats () {
 }
 
 
-export { register, login, fetchPage, fetchDetails, fetchSearchPage, fetchStats };
+async function createFurniture(data) {
+    const res = await fetch(host + 'furniture/create', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'bearer ' + localStorage.getItem('authToken')
+        },
+        body: JSON.stringify(data)
+    });
+    return await res.json();
+}
+
+export { register, login, fetchPage, fetchDetails, fetchSearchPage, fetchStats, createFurniture };
