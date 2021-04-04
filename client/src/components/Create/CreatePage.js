@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import Input from '../Auth/Input';
 
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { createAction } from '../../actions/furnitureActions';
+export default class CreatePage extends Component {
 
-
-class CreatePage extends Component {
     constructor(props) {
         super(props);
 
@@ -17,9 +13,8 @@ class CreatePage extends Component {
             description: '',
             price: '',
             image: '',
-            material: '',
-            submitting: false
-        };
+            material: ''
+        }
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -31,22 +26,10 @@ class CreatePage extends Component {
 
     async onSubmit(e) {
         e.preventDefault();
-        this.setState({submitting: true});
-        const furniture = {
-            make: this.state.make,
-            model: this.state.model,
-            year: this.state.year,
-            description: this.state.description,
-            price: this.state.price,
-            image: this.state.image,
-            material: this.state.material
-        };
-        await this.props.create(furniture);
-        this.setState({submitting: false});
-        this.props.history.push('/profile');
     }
 
     render() {
+
         const { make,
             model,
             year,
@@ -113,17 +96,3 @@ class CreatePage extends Component {
         );
     }
 }
-
-function mapState(state) {
-    return ({
-
-    });
-}
-
-function mapDispatch(dispatch) {
-    return {
-        create: (data) => dispatch(createAction(data))
-    };
-}
-
-export default connect(mapState, mapDispatch)(withRouter(CreatePage));
