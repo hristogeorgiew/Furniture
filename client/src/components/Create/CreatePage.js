@@ -14,7 +14,8 @@ export default class CreatePage extends Component {
             rooms: '',
             image: '',
             parkingSlots: '',
-            error: false
+            error: false,
+            submitting: false
         };
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
