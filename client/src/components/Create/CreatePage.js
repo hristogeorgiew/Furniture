@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Input from '../Common/Input';
-import { login } from '../../api/remote';
+import { createPets } from '../../api/remote';
 
 
 export default class LoginPage extends Component {
@@ -23,7 +23,14 @@ export default class LoginPage extends Component {
 
     async onSubmitHandler(e) {
         e.preventDefault();
-        //const response = await login(this.state.email, this.state.password);
+        const response = await createPets({
+            name: this.state.name, 
+            location: this.state.location,
+            description: this.state.description, 
+            breed: this.state.breed, 
+            image: this.state.image, 
+            gender: this.state.gender
+        });
     }
 
     render() {
