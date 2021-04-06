@@ -29,6 +29,19 @@ async function login(email, password) {
     return await res.json();
 }
 
+async function createPets(pet) {
+
+    const res = await fetch(host + 'hotels/create', {
+        method: 'POST',
+        headers: {
+            'Authorization': 'bearer ' + localStorage.getItem('authToken'),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(pet)
+    });
+    return await res.json();
+}
 
 
-export { register, login };
+
+export { register, login, createPets };
