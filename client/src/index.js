@@ -5,22 +5,14 @@ import reportWebVitals from './reportWebVitals';
 import './style/bootstrap.min.css';
 import './style/site.css';
 import { BrowserRouter as Router} from 'react-router-dom';
-import  reducers from './reducers/reducers';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-
-import { fetchStatsAction } from './actions/statsActions';
-
-const store = createStore(combineReducers(reducers), applyMiddleware(thunk));
 
 
-ReactDOM.render(
-  <Provider store={store}>
+ReactDOM.render((
+  
   <Router>
     <App />
-  </Router>
-  </ Provider>,
+  </Router>),
+
   document.getElementById('root')
 );
 

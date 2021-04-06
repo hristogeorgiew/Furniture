@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import Input from './Input';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { loginAction, redirect } from '../../actions/authActions';
+import Input from '../Common/Input';
+import { login } from '../../api/remote';
 
 
-class LoginPage extends Component {
+export default class LoginPage extends Component {
 
     constructor(props) {
         super(props);
@@ -25,15 +23,10 @@ class LoginPage extends Component {
 
     onSubmitHandler(e) {
         e.preventDefault();
-        this.props.login(this.state.email, this.state.password);
+        login(this.state.email, this.state.password);
     }
 
-    componentWillReceiveProps(nextProps){
-        if (nextProps.loginSuccess){
-            this.props.redirect();
-            this.props.history.push('/');
-        }
-    }
+    
 
     render() {
 
@@ -64,22 +57,9 @@ class LoginPage extends Component {
                 </div>
             </form>
         </div>
-        )
+        );
     }
 }
 
-function mapStateToprops (state){
-    return {
-        loginSuccess: state.login.success
-    }
-}
 
-function mapDispatchToProps (dispatch) {
-    return {
-        login: (email, password) => dispatch(loginAction(email, password)),
-        redirect: () => dispatch(redirect())
-    };
-}
-    
 
-export default connect(mapStateToprops, mapDispatchToProps)(withRouter (LoginPage));

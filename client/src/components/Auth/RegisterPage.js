@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import Input from './Input';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { registerAction, loginAction, redirect } from '../../actions/authActions';
+import Input from '../Common/Input';
+import { register } from '../../api/remote';
 
- class RegisterPage extends Component {
+ export default class RegisterPage extends Component {
 
     constructor(props) {
         super(props);
@@ -13,8 +11,8 @@ import { registerAction, loginAction, redirect } from '../../actions/authActions
             name: '',
             email: '',
             password: '',
-            repeat: '',
-            redirect: false
+            repeat: ''
+           
         };
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -27,16 +25,7 @@ import { registerAction, loginAction, redirect } from '../../actions/authActions
 
         onSubmitHandler(e) {
             e.preventDefault();
-            this.props.register(this.state.name, this.state.email, this.state.password);
-        }
-
-        componentWillReceiveProps(newProps) {
-            if(newProps.registerSuccess) {
-                this.props.login(this.state.email, this.state.password);
-            } else if (newProps.loginSuccess){
-                this.props.redirect();
-                this.props.history.push('/');
-            }
+            register(this.state.name, this.state.email, this.state.password);
         }
 
 
@@ -48,7 +37,6 @@ import { registerAction, loginAction, redirect } from '../../actions/authActions
             <div className="row space-top">
                 <div className="col-md-12">
                     <h1>Register</h1>
-                    <p>Please fill all fields.</p>
                 </div>
             </div>
             <form onSubmit={this.onSubmitHandler}>
@@ -88,22 +76,6 @@ import { registerAction, loginAction, redirect } from '../../actions/authActions
     }
 }
 
-function mapStateToprops (state){
-    return {
-        registerSuccess: state.register.success,
-        loginSuccess: state.login.success
-    }
-}
-
-function mapDispatchToProps (dispatch) {
-    return {
-        register: (name, email, password) => dispatch(registerAction(name, email, password)),
-        login: (email, password) => dispatch(loginAction(email, password)),
-        redirect: () => dispatch(redirect())
-    };
-}
     
-
-export default connect(mapStateToprops, mapDispatchToProps)(withRouter(RegisterPage));
 
 
