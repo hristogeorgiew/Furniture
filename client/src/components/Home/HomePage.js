@@ -28,8 +28,8 @@ export default class HomePage extends Component {
             <div className="container">
                 <div className="row space-top">
                     <div className="col-md-12">
-                        <h1>Welcome to Furniture System</h1>
-                        <p>Select furniture from the catalog to view details.</p>
+                        <h1>Welcome to Home</h1>
+                        
                     </div>
                 </div>
             </div>

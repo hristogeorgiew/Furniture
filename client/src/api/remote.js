@@ -29,7 +29,7 @@ async function login(email, password) {
     return await res.json();
 }
 
-async function createPets(pet) {
+async function createHotel(hotel) {
 
     const res = await fetch(host + 'hotels/create', {
         method: 'POST',
@@ -37,11 +37,11 @@ async function createPets(pet) {
             'Authorization': 'bearer ' + localStorage.getItem('authToken'),
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(pet)
+        body: JSON.stringify(hotel)
     });
     return await res.json();
 }
 
 
 
-export { register, login, createPets };
+export { register, login, createHotel };

@@ -12,7 +12,8 @@ export default class Input extends Component {
                     name={name}
                     id={name}
                     type={type}
-                    value={value} />
+                    value={value} 
+                />
             </div>
         );
     }
