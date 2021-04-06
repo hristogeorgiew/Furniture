@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Input from '../Common/Input';
 import { register } from '../../api/remote';
+import { withRouter,  } from 'react-router-dom';
 
- export default class RegisterPage extends Component {
+class RegisterPage extends Component {
 
     constructor(props) {
         super(props);
@@ -11,7 +12,8 @@ import { register } from '../../api/remote';
             name: '',
             email: '',
             password: '',
-            repeat: ''
+            repeat: '',
+            error: false
            
         };
 
@@ -23,20 +25,36 @@ import { register } from '../../api/remote';
             this.setState({ [e.target.name]: e.target.value });
         }
 
-        onSubmitHandler(e) {
+        async onSubmitHandler(e) {
             e.preventDefault();
-            register(this.state.name, this.state.email, this.state.password);
+            const res = await register(this.state.name, this.state.email, this.state.password);
+        
+            if(!res.success){
+                this.setState({error: res});
+            }
         }
 
 
     render() {
        
+        let errors = null;
+        if (this.state.error) {
+            errors = (
+                <div>
+                    <h2 className="errorMessage">{this.state.error.message}</h2>
+                    {Object.keys(this.state.error.errors).map(k => {
+                        return <p key={k}>{this.state.error.errors[k]}</p>;
+                    })}
+                </div>
+            );
+        }
 
         return (
             <div className="container">
             <div className="row space-top">
                 <div className="col-md-12">
                     <h1>Register</h1>
+                    {errors}
                 </div>
             </div>
             <form onSubmit={this.onSubmitHandler}>
@@ -76,6 +94,7 @@ import { register } from '../../api/remote';
     }
 }
 
-    
+
+export default withRouter(RegisterPage);
 
 
