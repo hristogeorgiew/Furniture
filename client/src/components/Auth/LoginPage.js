@@ -21,9 +21,11 @@ export default class LoginPage extends Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    onSubmitHandler(e) {
+    async onSubmitHandler(e) {
         e.preventDefault();
-        login(this.state.email, this.state.password);
+        const response = await login(this.state.email, this.state.password);
+        //save token from server
+        localStorage.setItem('authToken', response.token);
     }
 
     
