@@ -45,7 +45,7 @@ async function createHotel(hotel) {
 
 async function getPage (page) {
 
-    const res = await fetch(host + 'hotels/all'); 
+    const res = await fetch(host + 'hotels/all?page=' + page); 
     return await res.json();
 
 }

@@ -57,3 +57,22 @@ body {
   .hotelCard > a:hover {
     background: #ececec;
   }
+
+  .pagination {
+    display: block;
+    text-align: center;
+    font-size: 2em;
+}
+
+.pagination>a {
+    display: inline-block;
+    padding: 0.1em 0.5em;
+    margin: 0.1em 0.2em;
+    background: #c8c8c8;
+    color: black;
+    text-decoration: none;
+}
+
+.pagination>a:hover {
+    background: #ececec
+}

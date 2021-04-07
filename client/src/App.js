@@ -30,6 +30,7 @@ class App extends Component {
         <main>
           <Switch>
             <Route exact path='/' component={HomePage} />
+            <Route  path='/view/:page' component={HomePage} />
             <Route exact path='/login' component={LoginPage} />
             <Route exact path='/register' component={RegisterPage} />
             <Route exact path='/create' component={CreatePage} />
