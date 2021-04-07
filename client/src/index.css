@@ -76,3 +76,14 @@ body {
 .pagination>a:hover {
     background: #ececec
 }
+
+.hotelDetails {
+  margin-left: 4em;
+  margin-right: 4em;
+  padding: 5em;
+  border: 1px solid #696969;
+}
+
+.hotelDetails img {
+  width: 100%;
+}

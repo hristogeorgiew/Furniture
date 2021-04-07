@@ -50,4 +50,14 @@ async function getPage (page) {
 
 }
 
-export { register, login, createHotel, getPage};
+async function getDetails(id) {
+    const res = await fetch(host + 'hotels/details/' + id, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'bearer ' + localStorage.getItem('authToken'),            
+        }
+    });
+    return await res.json();
+}
+
+export { register, login, createHotel, getPage, getDetails};

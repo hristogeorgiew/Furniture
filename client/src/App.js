@@ -6,6 +6,7 @@ import LoginPage from './components/Auth/LoginPage';
 import HomePage from './components/Home/HomePage';
 import NotFound from './components/Common/NotFound';
 import CreatePage from './components/Create/CreatePage';
+import DetailsPage from './components/Details/DetailsPage';
 import Header from './components/Common/Header';
 
 
@@ -31,6 +32,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route  path='/view/:page' component={HomePage} />
+            <Route  path='/details/:id' component={DetailsPage} />
             <Route exact path='/login' component={LoginPage} />
             <Route exact path='/register' component={RegisterPage} />
             <Route exact path='/create' component={CreatePage} />
