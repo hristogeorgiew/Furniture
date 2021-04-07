@@ -46,7 +46,7 @@ class RegisterPage extends Component {
                 this.setState({error: res});
                 return;
             }
-            this.props.history.push('/');
+            this.props.history.push('/login');
         }
 
 

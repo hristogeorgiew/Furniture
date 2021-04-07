@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Input from '../Common/Input';
 import { login } from '../../api/remote';
+import { withRouter } from 'react-router';
 
 
-export default class LoginPage extends Component {
+class LoginPage extends Component {
 
     constructor(props) {
         super(props);
@@ -23,9 +24,20 @@ export default class LoginPage extends Component {
 
     async onSubmitHandler(e) {
         e.preventDefault();
-        const response = await login(this.state.email, this.state.password);
+
+        const res = await login(this.state.email, this.state.password);
+
+        if(!res.success){
+            this.setState({error: res});
+            return;
+        }
+
         //save token from server
-        localStorage.setItem('authToken', response.token);
+        localStorage.setItem('authToken', res.token);
+
+        //redirect
+        this.props.history.push('/');
+        
     }
 
     
@@ -64,4 +76,4 @@ export default class LoginPage extends Component {
 }
 
 
-
+export default withRouter(LoginPage);
