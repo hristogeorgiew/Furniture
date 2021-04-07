@@ -43,5 +43,11 @@ async function createHotel(hotel) {
 }
 
 
+async function getPage (page) {
 
-export { register, login, createHotel };
+    const res = await fetch(host + 'hotels/all'); 
+    return await res.json();
+
+}
+
+export { register, login, createHotel, getPage};

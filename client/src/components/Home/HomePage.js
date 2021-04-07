@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
-
+import { getPage } from '../../api/remote';
+import HotelsList from './HotelsList';
 
 export default class HomePage extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            query: ''
+            hotels: []
         };
-
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onChange(e) {
-        this.setState({[e.target.name]: e.target.value});
+    //с него извикваме getData при маутване на компонента компонент hook
+    componentDidMount() {
+        this.getData();
     }
 
-    onSubmit(e) {
-        e.preventDefault();
-        this.props.fetchSearch(this.state.query, 1);
+    async getData() {
+        const data = await getPage(1);
+        this.setState({ hotels: data });
     }
-
 
     render() {
         return (
@@ -29,7 +27,9 @@ export default class HomePage extends Component {
                 <div className="row space-top">
                     <div className="col-md-12">
                         <h1>Welcome to Home</h1>
-                        
+                        {this.state.hotels.length === 0 ?
+                    <p>Loading &hellip;</p> :
+                    <HotelsList hotels={this.state.hotels}/>}
                     </div>
                 </div>
             </div>
