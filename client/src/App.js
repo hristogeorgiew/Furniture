@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Header loggedIn={false} onLogout={this.onLogout} />
+        <Header loggedIn={localStorage.getItem('authToken') != null} onLogout={this.onLogout} />
         <main>
           <Switch>
             <Route exact path='/' component={HomePage} />
