@@ -9,6 +9,7 @@ import NotFound from './components/Common/NotFound';
 import CreatePage from './components/Create/CreatePage';
 import DetailsPage from './components/Details/DetailsPage';
 import Header from './components/Common/Header';
+import Footer from './components/Common/Footer';
 
 
 
@@ -41,6 +42,7 @@ class App extends Component {
             <Route exact component={NotFound} />
           </Switch>
         </main>
+        <Footer />
       </div>
     );
   }

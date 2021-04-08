@@ -110,7 +110,7 @@ body {
 #contact {
   background: #F9F9F9;
   padding: 25px;
-  margin: 150px 0;
+  margin: 80px 0;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
@@ -211,4 +211,15 @@ fieldset {
 
 :-ms-input-placeholder {
   color: #888;
+}
+
+.footer {
+  margin-top: 50px;
+  height: 30px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
 }

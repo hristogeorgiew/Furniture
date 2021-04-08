@@ -1,6 +1,6 @@
 const Contact = function () {
     return(
-        <div class="container">
+        <div className="container">
   <form id="contact" action="" method="post">
     <h3>Colorlib Contact Form</h3>
     <h4>Contact us for custom quote</h4>
