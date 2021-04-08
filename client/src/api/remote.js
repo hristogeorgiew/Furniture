@@ -60,4 +60,19 @@ async function getDetails(id) {
     return await res.json();
 }
 
-export { register, login, createHotel, getPage, getDetails};
+async function postReview(hotelId, comment, rating) {
+    const res = await fetch(host + `hotels/details/${hotelId}/reviews/create`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'bearer ' + localStorage.getItem('authToken'),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            comment,
+            rating
+        })
+    });
+    return await res.json();
+}
+
+export { register, login, createHotel, getPage, getDetails, postReview};

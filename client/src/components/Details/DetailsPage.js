@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { getDetails } from '../../api/remote'
+import ReviewSection from './ReviewSection';
+
 
 
 export default class DetailsPage extends Component {
@@ -42,6 +44,7 @@ export default class DetailsPage extends Component {
             <div className="container">
                 <h1>Details Page</h1>
                 {main}
+                <ReviewSection hotelId={Number(this.props.match.params.id)}/>
             </div>
         );
     }

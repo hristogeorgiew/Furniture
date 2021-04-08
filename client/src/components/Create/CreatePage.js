@@ -57,6 +57,7 @@ export default class CreatePage extends Component {
             this.setState({ error: res, submitting: false });
             return;
         }
+        
         this.setState({ submitting: false });        
         this.props.history.push('/');
 
