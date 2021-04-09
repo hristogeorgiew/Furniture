@@ -36,7 +36,7 @@ export default class HomePage extends Component {
         const page = Number(this.props.match.params.page || 1);
 
         return (
-            <div className="container">
+            <div>
                 <div className="row space-top">
                     <div className="col-md-12">
                         <h1>Welcome to Home</h1>

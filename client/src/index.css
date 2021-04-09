@@ -32,30 +32,35 @@ body {
     color: white;
   }
 
+
   .hotelCard {
     display: inline-block;
-    width: 300px;
+    width: 400px;
     border: 1px solid green;
     padding: 1em;
     margin: 0.25em 0.5em;
     text-align: center;
   }
+  
 
   .hotelCard > img {
     width: 90%;
   }
   
   .hotelCard > a {
-    display: inline-block;
-    padding: 0.1em 0.2em;
-    margin: 0.2em 0.2em;
-    background: #c8c8c8;
-    color: black;
+    cursor: pointer;
+    width: 95%;
+    border: none;
+    background: #4CAF50;
+    color: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
     text-decoration: none;
   }
 
   .hotelCard > a:hover {
-    background: #ececec;
+    background: black;
   }
 
   .pagination {
@@ -68,13 +73,13 @@ body {
     display: inline-block;
     padding: 0.1em 0.5em;
     margin: 0.1em 0.2em;
-    background: #c8c8c8;
-    color: black;
+    background: green;
+    color: white;
     text-decoration: none;
 }
 
 .pagination>a:hover {
-    background: #ececec
+    background: black;
 }
 
 .hotelDetails {
