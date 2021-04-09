@@ -51,25 +51,33 @@ class LoginPage extends Component {
                     <h1>Login</h1>
                 </div>
             </div>
-            <form onSubmit={this.onSubmitHandler}>
+            <div className="container">
+            <form id="contact" onSubmit={this.onSubmitHandler}>
+            <h3>Login Form</h3>
                 <div className="row space-top">
                     <div className="col-md-4">
+                    <fieldset>
                         <Input 
                             name="email"
                             value={this.state.email}
                             onChange={this.onChangeHandler}
                             label="E-mail"
                         />
+                    </fieldset>
+
+                    <fieldset>
                         <Input 
                             name="password"
                             value={this.state.password}
                             onChange={this.onChangeHandler}
                             label="Password"
                         />
+                        </fieldset>
 						<input type="submit" className="btn btn-primary" value="Login" />
                     </div>
                 </div>
             </form>
+            </div>
         </div>
         );
     }

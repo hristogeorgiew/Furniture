@@ -18,7 +18,7 @@ const Contact = function () {
   return (
     <div className="container">
       <form id="contact" onSubmit={sendEmail}>
-        <h3>Colorlib Contact Form</h3>
+        <h3>Contact Form</h3>
         <h4>Contact us for custom quote</h4>
         <fieldset>
           <input placeholder="Your name" name="name" type="text" tabindex="1" required autofocus />

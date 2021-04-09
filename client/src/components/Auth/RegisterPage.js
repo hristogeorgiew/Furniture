@@ -72,7 +72,8 @@ class RegisterPage extends Component {
                     {errors}
                 </div>
             </div>
-            <form onSubmit={this.onSubmitHandler}>
+            <div className="container">
+            <form id="contact"  onSubmit={this.onSubmitHandler}>
                 <div className="row space-top">
                     <div className="col-md-4">
                         <Input 
@@ -93,17 +94,20 @@ class RegisterPage extends Component {
                             onChange={this.onChangeHandler}
                             label="Password"
                         />
+                         
 						 <Input 
                             name="repeat"
-                            type="password"
+                            
                             value={this.state.repeat}
                             onChange={this.onChangeHandler}
                             label="Repeat password"
                         />
+                        
 						<input type="submit" class="btn btn-primary" value="Register" />
                     </div>
                 </div>
             </form>
+            </div>
         </div>
         )
     }
