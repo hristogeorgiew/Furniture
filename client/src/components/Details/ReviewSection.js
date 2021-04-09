@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {  postReview } from '../../api/remote';
+import {  postReview, getReviews } from '../../api/remote';
 import Review from './Review';
 
 export default class ReviewSection extends Component {
@@ -18,6 +18,15 @@ export default class ReviewSection extends Component {
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
     }
 
+    componentDidMount() {
+        this.getData();
+    }
+
+    async getData() {
+        const reviews = await getReviews(this.props.hotelId);
+        this.setState({reviews});
+    }
+
     onChangeHandler(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
@@ -30,6 +39,11 @@ export default class ReviewSection extends Component {
             this.setState({ error: res});
             return;
         }
+        //да показваме динамично данните като коментира някои
+        const reviews = this.state.reviews.slice();
+        reviews.push(res.review);
+        this.setState({reviews});
+        this.getData();
     }
 
     render() {
@@ -71,7 +85,7 @@ export default class ReviewSection extends Component {
                         />
                     
                         {this.state.reviews.map(r => (
-                            <Review user={r.user} comment={r.comment} rating={r.rating} />
+                            <Review key={r.createdOn} user={r.user} comment={r.comment} rating={r.rating} date={r.createdOn} />
                         ))};
                     </form>
                 </div>
