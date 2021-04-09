@@ -80,7 +80,8 @@ export default class CreatePage extends Component {
             <div>
                 <h1>Create Hotels</h1>
                 {errors }
-                <form onSubmit={this.onSubmitHandler}>
+                <div className="container">
+                <form id="contact" onSubmit={this.onSubmitHandler}>
                     <Input
                         name="name"
                         value={this.state.name}
@@ -107,20 +108,19 @@ export default class CreatePage extends Component {
                     />
                     <Input
                         name="rooms"
-                        type="number"
                         value={this.state.rooms}
                         onChange={this.onChangeHandler}
                         label="Number of Rooms"
                     />
                     <Input
                         name="parkingSlots"
-                        type="number"
                         value={this.state.parkingSlots}
                         onChange={this.onChangeHandler}
                         label="Parking Slots"
                     />
                     <input type="submit" value="Create" disabled={this.state.submitting}/>
                 </form>
+                </div>
             </div>
         )
     }
