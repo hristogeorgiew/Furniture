@@ -103,6 +103,15 @@ body {
   position: relative;
 }
 
+.details {
+  max-width: 50%;
+  margin: 0 auto;
+  
+}
+.details img {
+  width: 100px;
+}
+
 #contact input[type="text"],
 #contact input[type="email"],
 #contact input[type="tel"],

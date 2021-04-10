@@ -88,7 +88,7 @@ export default class ReviewSection extends Component {
                     
                         {this.state.reviews.map(r => (
                             <Review key={r.createdOn} user={r.user} comment={r.comment} rating={r.rating} date={r.createdOn} />
-                        ))};
+                        ))}
                     </form>
                 </div>
         )

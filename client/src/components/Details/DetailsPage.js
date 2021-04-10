@@ -41,7 +41,7 @@ export default class DetailsPage extends Component {
         }
 
         return (
-            <div className="container">
+            <div className="details">
                 <h1>Details Page</h1>
                 {main}
                 <ReviewSection hotelId={Number(this.props.match.params.id)}/>
