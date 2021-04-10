@@ -85,4 +85,14 @@ async function getReviews(hotelId) {
     return await res.json();
 }
 
-export { register, login, createHotel, getPage, getDetails, postReview, getReviews};
+async function deleteHotel(hotelId) {
+    const res = await fetch(host + `hotels/${hotelId}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': 'bearer ' + localStorage.getItem('authToken'),            
+        }
+    });
+    return await res.json();
+}
+
+export { register, login, createHotel, getPage, getDetails, postReview, getReviews, deleteHotel};

@@ -53,6 +53,11 @@ function validateHotelForm (payload) {
   }
 }
 
+router.delete('hotels/:id', authCheck, (req, res) => {
+  
+})
+
+
 router.post('/create', authCheck, (req, res) => {
   const hotel = req.body
 

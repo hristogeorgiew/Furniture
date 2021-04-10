@@ -7,6 +7,8 @@ export default class HotelList extends Component {
             <div>
                 {this.props.hotels.map(h => (
                     <HotelCard
+                        canDelete={h.id == 2}
+                        del={() => this.props.deleteHotel(h.id)}
                         key={h.id}
                         id={h.id}
                         name={h.name}
