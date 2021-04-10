@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {  postReview, getReviews } from '../../api/remote';
 import Review from './Review';
+import toastr from 'toastr';
 
 export default class ReviewSection extends Component {
 
@@ -44,6 +45,7 @@ export default class ReviewSection extends Component {
         reviews.push(res.review);
         this.setState({reviews});
         this.getData();
+        toastr.success('Review posted successfully');
     }
 
     render() {
