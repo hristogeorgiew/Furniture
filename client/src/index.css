@@ -111,6 +111,19 @@ body {
 .details img {
   width: 100px;
 }
+.details input {
+  display: inline-block;
+    padding: 0.1em 0.5em;
+    margin: 0.1em 0.2em;
+    background: green;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.details input:hover {
+  background: black;
+}
 
 #contact input[type="text"],
 #contact input[type="email"],

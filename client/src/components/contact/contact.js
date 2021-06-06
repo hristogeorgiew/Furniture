@@ -1,5 +1,6 @@
 import React from 'react';
 import emailjs from 'emailjs-com';
+import toastr from 'toastr';
 
 const Contact = function () {
 
@@ -13,6 +14,8 @@ const Contact = function () {
           console.log(error.text);
       });
       e.target.reset();
+
+      toastr.success('Message sent succssesfuly');
   }
 
   return (
